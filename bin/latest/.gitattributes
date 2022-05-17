@@ -1,0 +1,2 @@
+MPCC filter=lfs diff=lfs merge=lfs -text
+MerlyInstaller filter=lfs diff=lfs merge=lfs -text
