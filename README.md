@@ -24,41 +24,54 @@ the ability to train new models on other code bases, including users’ own prop
 
 ## Installation Instructions
 
-Installation instructions for Linux RedHat can be found below. If you encounter any trouble with
-these steps, please contact support@merly.ai for assistance.
+Below we list MPCC’s installation instructions for various operating systems (OSes). If you previously installed MP-CodeCheck
+without a product key, but now have one, it is safe to run the MerlyInstaller again to register MPCC with a product key.
 
-For your setup in Linux RedHat, go to the Command Line Interface (CLI) and execute the following commands. where `<key>` is your product key:
+Note that a product key will look similar to the following: 5SA9-HBP2-WRBV-5WA1
+
+If you encounter any trouble with these steps, please contact support@merly.ai for assistance.
+
+### Linux (CentOS, RedHat, SUSE, Ubuntu), MacOS (M1 ARM, x64 Intel)
+
+Launch the command line interface (CLI) and execute the following command:
 
 ```
-  mkdir MPCC
-  cd MPCC/
-  curl -OL https://github.com/merly-ai/MP-CodeCheckBin-RedHat/raw/main/bin/latest/MerlyInstaller
-  chmod +x MerlyInstaller
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/merly-ai/MPCC-Universal/main/install.sh)"
+```
+If you have not already registered with your license key, execute the following command from the CLI, where `<key>` is your product key:
+```
   ./MerlyInstaller -k <key> install
 ```
-Note that if you previously installed MP-CodeCheck but now have a product key, running the MerlyInstaller step will register
-the key, and is safe to be performed.
+
+For MacOS, we recommend running MPCC with iTerm2, due to its support of a broader color scheme than is possible for the
+default MacOS terminal. You can download it for free here: https://iterm2.com/downloads.html.
+
+### Windows (64-bit)
+Launch ```cmd.exe``` (do not use PowerShell as the below cURL command will not work). Navigate to
+your user preferred installation directory (e.g., ```cd C:\Users\Paul```). Then execute the following commands where
+```<key>``` is your product key:
   
-You’re now ready to launch MP-CodeCheck!
-
-## Folder Structure
-Prior to running inference and reviewing the results, let’s make sure the environment is set up correctly. To run MPCC, you’ll need the following three
-things (at a minimum):
-1. A model trained on code (provided during setup).
-2. The MPCC executable (provided during setup).
-3. A code base to run inference against (provided by you, the user).
-
-Please ensure both the MPCC model and the executable file were placed in the same folder. (This should have been completed
-for you by following the steps in setup.)
-Then, to simplify inference, we recommend you place the code repository folder in the same directory as MPCC. Your setup is now complete!
-
-
+```
+  mkdir MPCC
+  cd MPCC
+  curl -LO https://github.com/merly-ai/MP-CodeCheckBin-Windows/raw/main/bin/latest/MerlyInstaller.exe
+  MerlyInstaller -k <key> install
+```
+ 
 ## Launching MP-CodeCheck
 Now that setup is complete, let’s launch MPCC to perform inference analysis. From the command line interface (CLI), type the
 following (where ”[code base folder]” is a directory that contains the code you want to analyze):
 
-*./MPCC infer -D [code base folder]*
+### MacOS, Linux
+```
+./MPCC infer -D [code base folder]
+```
 
+### Windows
+```
+  MPCC.exe infer -D [code base folder]
+```
+  
 When run successfully, MPCC will display information that looks similar to the following screen. This shows the progress of MPCC extracting the code DNA from the training data.
 
 <img width="769" alt="launch1" src="https://user-images.githubusercontent.com/92695077/169102884-2df8f152-5b54-4546-a194-d3ceb32c12c3.png">
